@@ -1,0 +1,8 @@
+node_modules/*
+build/*
+bower_components/*
+*.log
+.grunt
+.lock-wscript
+photos
+.DS_Store
