@@ -2,9 +2,17 @@ var express = require('express'),
 	mongoose = require('mongoose'),
 	path = require('path'),
 	bodyParser = require('body-parser'),
-	dbConfig = require('./db')
+	dbConfig = require('./db'),
+	seeder = require('./seeder'),
+	PSIReading = require('./models/PSIreading');
 
 var app = express();
+
+mongoose.connect(dbConfig.url);
+mongoose.connection.on('open', function() {
+	console.log('Connected to Mongoose...');
+		seeder.check();
+});
 
 var logger = function(req, res, next) {
     console.log("Received request " + req.method + " " + req.url);
@@ -20,11 +28,21 @@ app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-var server = app.listen(3000, function () {
+app.get('/allpsi', function(req, res) {
+	console.log("/allpsi called")
+	PSIReading.find({}, function(err, readings) {
+		if (err) {
+			console.log('Error in retrieving readings: ' + err);
+			throw err;
+		}
+		console.log("Readings retrieved successfully");
+		res.send(readings);
+	})
+});
 
-	var host = server.address().address;
-	var port = server.address().port;
+app.set('port', (process.env.PORT || 3000));
+app.use(express.static(__dirname + '/public'));
 
-	console.log('Example app listening at http://%s:%s', host, port);
-
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });

@@ -7,22 +7,26 @@ grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
 
-    bower_concat: {
-        all: {
-            dest: "build/dependencies.js",  // Concatenated file
-            cssDest: "build/dependencies.css"
-        }
-    },
-
     clean: {
         dev: ['build', 'public']
     },
+
+  react: {
+    dev: {
+      files: {
+        'build/reactcomponents.js': 'client/views/*.jsx'
+      }
+    },
+  },
 
     concat: { 
         'build/app.js': //must be in this specific order if not will fail to find references
         ['client/models/*.js', 
         'client/views/*.js',
         'client/controllers/*.js'],
+
+        'build/styles.css':
+        ['client/styles/styles.css']
     },
 
     copy: { //in dev mode, copy files from build directory to public so our front-end app can see them and our server can server them
@@ -95,7 +99,7 @@ grunt.initConfig({
 
 });
 
-grunt.registerTask('build:dev', ['clean:dev', 'concat', 'bower_concat', 'copy:dev']);
+grunt.registerTask('build:dev', ['clean:dev', 'concat', 'react', 'copy:dev']);
 grunt.registerTask('server', ['build:dev', 'concurrent:dev']);
 
 };
