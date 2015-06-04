@@ -4,7 +4,7 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	dbConfig = require('./db'),
 	seeder = require('./seeder'),
-	PSIReading = require('./models/PSImodel');
+	PSIReading = require('./models/PSIReading');
 
 var app = express();
 

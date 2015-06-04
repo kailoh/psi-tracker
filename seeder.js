@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-PSIReading = require('./models/PSImodel');
+PSIReading = require('./models/PSIReading');
 
 module.exports = {
 	
