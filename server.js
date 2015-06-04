@@ -10,8 +10,8 @@ var app = express();
 
 mongoose.connect(dbConfig.url);
 mongoose.connection.on('open', function() {
-	console.log('Connected to Mongoose...');
-		seeder.check();
+	console.log('Connected to Mongo...');
+	seeder.check();
 });
 
 var logger = function(req, res, next) {
