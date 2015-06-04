@@ -4,7 +4,8 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	dbConfig = require('./db'),
 	seeder = require('./seeder'),
-	PSIReading = require('./models/PSIReading');
+	PSIReading = require('./models/PSIReading'),
+	crawler = require('./crawler');
 
 var app = express();
 
@@ -44,6 +45,8 @@ app.set('port', (process.env.PORT || 3000));
 app.use(express.static(__dirname + '/public'));
 
 console.log('port is: ' + app.get('port'));
+
+crawler();
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));

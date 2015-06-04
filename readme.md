@@ -1,5 +1,7 @@
 # psi-tracker
 
+Built with node + react.
+
 ## Instructions
 
 ### Run this app locally
