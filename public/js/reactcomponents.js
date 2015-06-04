@@ -1,3 +1,7 @@
+/***
+* Nav Bar Components for React
+***/
+
 var RouterMixin = {
   componentWillMount : function() {
     this.callback = (function() {
@@ -81,6 +85,11 @@ var InterfaceComponent = React.createClass({displayName: "InterfaceComponent",
     );
   }
 });
+/***
+* Table Components for React
+***/
+
+
 var ModelMixin = {
 	componentDidMount: function() {
     // Whenever there may be a change in the Backbone data, trigger a reconcile.
@@ -171,6 +180,10 @@ var Reading = React.createClass({displayName: "Reading",
 	}
 });
 
+
+/**
+* Called zRender because this has to be the last file in sequential order otherwise references won't work
+**/
 
 var collection = new PSICollection();
 
