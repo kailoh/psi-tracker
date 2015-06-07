@@ -3,6 +3,7 @@ var express = require('express'),
 	path = require('path'),
 	bodyParser = require('body-parser'),
 	dbConfig = require('./db'),
+	apiConfig = require('./apiconfig')
 	seeder = require('./seeder'),
 	PSIReading = require('./models/PSIReading'),
 	crawler = require('./crawler');
@@ -43,8 +44,6 @@ app.get('/allpsi', function(req, res) {
 
 app.set('port', (process.env.PORT || 3000));
 app.use(express.static(__dirname + '/public'));
-
-console.log('port is: ' + app.get('port'));
 
 crawler();
 
