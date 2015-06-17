@@ -3,6 +3,8 @@ console.log("Running Crawler");
 var request = require('request');
 var parseString = require('xml2js').parseString;
 var PSIReading = require('./models/PSIReading');
+var mongoose = require('mongoose');
+var dbConfig = require('./db');
 
 function crawl() {
 
