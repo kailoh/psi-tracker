@@ -4,6 +4,7 @@ var parseString = require('xml2js').parseString;
 var PSIReading = require('./models/PSIReading');
 
 module.exports = function() {
+
 	var apiKey = process.env.NEA_API_KEY || '781CF461BB6606AD24D4ABA1502FD8EEB89262F6D662DFE0';
 	var endpoint = 'http://www.nea.gov.sg/api/WebAPI?dataset=psi_update&keyref=' + apiKey;
 
