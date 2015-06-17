@@ -34,8 +34,8 @@ function crawl() {
 				PSIReading.find({
 					"date": {"$gte": readingDate} 
 				}, function(err, readings){
+					console.log("Found " + readings + " readings");
 					if (readings.length == 0) {
-						console.log("Did not find any newer readings");
 						newReading.save(function(err, newReading3){
 							console.log('Successfully inserted reading: ' + newReading._id);
 						});
