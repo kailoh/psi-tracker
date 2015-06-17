@@ -1,9 +1,10 @@
-//state required modules here 
+console.log("Running Crawler");
+
 var request = require('request');
 var parseString = require('xml2js').parseString;
 var PSIReading = require('./models/PSIReading');
 
-module.exports = function() {
+function crawl() {
 	var apiKey = process.env.NEA_API_KEY || '781CF461BB6606AD24D4ABA1502FD8EEB89262F6D662DFE0';
 	var endpoint = 'http://www.nea.gov.sg/api/WebAPI?dataset=psi_update&keyref=' + apiKey;
 
@@ -19,8 +20,6 @@ module.exports = function() {
 					psiValue = result.channel.item[0].region[i].record[0].reading[0].$.value;
 					tidiedData[region] = psiValue;
 				}
-
-				console.dir(tidiedData);
 
 				var readingDate = new Date(tidiedData.time.substring(0,4) + '/' + tidiedData.time.substring(4,6) + '/' + tidiedData.time.substring(6,8) + ' ' + tidiedData.time.substring(8,10) + ':00:00 GMT+0800');
 
@@ -45,5 +44,6 @@ module.exports = function() {
 		}
 
 	});
-
 }
+
+crawl();

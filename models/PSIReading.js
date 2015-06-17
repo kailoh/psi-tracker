@@ -6,5 +6,6 @@ module.exports = mongoose.model('PSIReading',{
 	south: Number,
 	east: Number,
 	west: Number,
-	central: Number
+	central: Number,
+	national: Number
 });

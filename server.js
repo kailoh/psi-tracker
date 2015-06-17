@@ -3,9 +3,8 @@ var express = require('express'),
 	path = require('path'),
 	bodyParser = require('body-parser'),
 	dbConfig = require('./db'),
-	apiConfig = require('./apiconfig')
-	seeder = require('./seeder'),
 	PSIReading = require('./models/PSIReading'),
+	seeder = require('./seeder')
 	crawler = require('./crawler');
 
 var app = express();
@@ -45,7 +44,7 @@ app.get('/allpsi', function(req, res) {
 app.set('port', (process.env.PORT || 3000));
 app.use(express.static(__dirname + '/public'));
 
-crawler();
+setInterval(crawler,1800000);
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));

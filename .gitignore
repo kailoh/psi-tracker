@@ -6,4 +6,3 @@ bower_components/*
 .lock-wscript
 photos
 .DS_Store
-apiconfig.js
