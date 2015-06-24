@@ -11,22 +11,23 @@ grunt.initConfig({
         dev: ['build', 'public']
     },
 
-  react: {
-    dev: {
-      files: {
-        'build/reactcomponents.js': 'client/views/*.jsx'
-      }
+    browserify: {
+        dev: {
+            files: {
+                'build/app.js': ['client/views/*.jsx', 
+                                'client/models/*.js', 
+                                'client/views/*.js',
+                                'client/controllers/*.js'],
+            },
+            options: {
+                transform: [ require('grunt-react').browserify ]
+            },
+        }
     },
-  },
 
     concat: { 
-        'build/app.js': //must be in this specific order if not will fail to find references
-        ['client/models/*.js', 
-        'client/views/*.js',
-        'client/controllers/*.js'],
-
         'build/styles.css':
-        ['client/styles/styles.css']
+        ['client/styles/*.css']
     },
 
     copy: { //in dev mode, copy files from build directory to public so our front-end app can see them and our server can server them
@@ -99,7 +100,7 @@ grunt.initConfig({
 
 });
 
-grunt.registerTask('build:dev', ['clean:dev', 'concat', 'react', 'copy:dev']);
+grunt.registerTask('build:dev', ['clean:dev', 'concat', 'browserify:dev', 'copy:dev']);
 grunt.registerTask('server', ['build:dev', 'concurrent:dev']);
 
 };

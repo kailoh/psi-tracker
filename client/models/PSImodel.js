@@ -1,12 +1,5 @@
-var PSIModel = Backbone.Model.extend({
-  url: '/psi'
-});
+var Backbone = require('backbone');
 
-var PSICollection = Backbone.Collection.extend({
-  model: PSIModel,
-  url: '/allpsi',
-  initialize: function() {
-  	console.log("initializing PSI collection");
-    this.fetch();
-  }
+module.exports = Backbone.Model.extend({
+	url: '/psi'
 });
