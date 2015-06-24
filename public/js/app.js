@@ -15,11 +15,11 @@ jQuery.ajax(options).done(function(){
 	google.load("visualization", "1", {
 		packages:["corechart"],
 		callback: function() {
-			var ourCollection = new Collection();
-			var startRendering = ourCollection.fetch({
+			var collection = new Collection();
+			var startRendering = collection.fetch({
 				success: function() {
 					React.render(
-						React.createElement(PSITable, {propsCollection: ourCollection}),
+						React.createElement(PSITable, {collection: collection}),
 						document.getElementById('table')
 						);
 				}
@@ -86,17 +86,31 @@ var React = require('react'),
 	json2csv = require('json2csv')
 
 module.exports = React.createClass({displayName: "exports",
+	handleClick: function() {
+		console.log("handleClick");
+		console.dir(this.props.collection);
+
+		var csvContent = "data:text/csv;charset=utf-8,";
+		csvContent += "Date,National,North,South,East,West,Central\n";
+		this.props.collection.forEach(function(reading) {
+			var row = reading.get('date') + "," 
+					+ reading.get('national') + "," 
+					+ reading.get('north') + "," 
+					+ reading.get('south') + "," 
+					+ reading.get('east') + ","
+					+ reading.get('west') + ","
+					+ reading.get('central') + "\n"
+			csvContent += row;
+		});
+		var encodedUri = encodeURI(csvContent);
+		window.open(encodedUri);
+		console.log("handleClick END");
+	},
 	render: function() {
 		var formattedStartDate = this.props.startDate.format('ha, MMMM Do YYYY'),
 			formattedEndDate = this.props.endDate.format('ha, MMMM Do YYYY')
-
-		// var fields = ['Date', 'National', 'North', 'South', 'East', 'West', 'Central'];
-		// json2csv({ data: this.props.collection, fields: fields }, function(err, csv) {
-  // 			if (err) console.log(err);
-		// });
-
 		return (
-			React.createElement("button", null, "Download data from ", formattedStartDate, " to ", formattedEndDate)
+			React.createElement("button", {onClick: this.handleClick}, "Download data from ", formattedStartDate, " to ", formattedEndDate)
 		)
 	}
 
@@ -115,7 +129,7 @@ module.exports = React.createClass({displayName: "exports",
 	mixins: [modelMixin],
 	updateCollection: function(startDate, endDate) {
 		var newCollection = [];
-		this.props.propsCollection.forEach(function(reading) {
+		this.props.collection.forEach(function(reading) {
 			var readingDate = moment(reading.get('date'));
 			if (readingDate > startDate && readingDate < endDate) {
 				newCollection.push(reading);
@@ -129,13 +143,13 @@ module.exports = React.createClass({displayName: "exports",
 		this.updateCollection(this.state.startDate, this.state.endDate);
 	},
 	getBackboneCollections: function() {
-		return [this.props.propsCollection];
+		return [this.props.collection];
 	},
 	getInitialState: function() {
 		return {
 			startDate: moment().tz('Asia/Singapore').subtract(48, 'hours'),
 			endDate: moment().tz('Asia/Singapore'),
-			collection: this.props.propsCollection
+			collection: this.props.collection
 		};
 	},
 	setStartDate: function(startDate) {
@@ -151,8 +165,6 @@ module.exports = React.createClass({displayName: "exports",
 		});
 	},
 	render: function() {
-		console.log("Render filterable table");
-		console.dir(this.state.collection);
 		return(
 			React.createElement("div", null, 
 				React.createElement(DateControl, {onStartDateChanged: this.setStartDate, onEndDateChanged: this.setEndDate, startDate: this.state.startDate, endDate: this.state.endDate}), 

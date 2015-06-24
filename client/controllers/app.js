@@ -14,11 +14,11 @@ jQuery.ajax(options).done(function(){
 	google.load("visualization", "1", {
 		packages:["corechart"],
 		callback: function() {
-			var ourCollection = new Collection();
-			var startRendering = ourCollection.fetch({
+			var collection = new Collection();
+			var startRendering = collection.fetch({
 				success: function() {
 					React.render(
-						<PSITable propsCollection={ourCollection} />,
+						<PSITable collection={collection} />,
 						document.getElementById('table')
 						);
 				}

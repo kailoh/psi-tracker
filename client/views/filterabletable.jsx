@@ -11,7 +11,7 @@ module.exports = React.createClass({
 	mixins: [modelMixin],
 	updateCollection: function(startDate, endDate) {
 		var newCollection = [];
-		this.props.propsCollection.forEach(function(reading) {
+		this.props.collection.forEach(function(reading) {
 			var readingDate = moment(reading.get('date'));
 			if (readingDate > startDate && readingDate < endDate) {
 				newCollection.push(reading);
@@ -25,13 +25,13 @@ module.exports = React.createClass({
 		this.updateCollection(this.state.startDate, this.state.endDate);
 	},
 	getBackboneCollections: function() {
-		return [this.props.propsCollection];
+		return [this.props.collection];
 	},
 	getInitialState: function() {
 		return {
 			startDate: moment().tz('Asia/Singapore').subtract(48, 'hours'),
 			endDate: moment().tz('Asia/Singapore'),
-			collection: this.props.propsCollection
+			collection: this.props.collection
 		};
 	},
 	setStartDate: function(startDate) {
@@ -47,8 +47,6 @@ module.exports = React.createClass({
 		});
 	},
 	render: function() {
-		console.log("Render filterable table");
-		console.dir(this.state.collection);
 		return(
 			<div>
 				<DateControl onStartDateChanged={this.setStartDate} onEndDateChanged={this.setEndDate} startDate={this.state.startDate} endDate={this.state.endDate} />
