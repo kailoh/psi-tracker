@@ -8,6 +8,7 @@ module.exports = React.createClass({
 		return(
 			<tr className="reading">
 			<td>{formattedDate}</td>
+			<td>{this.props.national}</td>
 			<td>{this.props.north}</td>
 			<td>{this.props.south}</td>
 			<td>{this.props.east}</td>

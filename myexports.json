@@ -1,3 +1,4 @@
+{ "_id" : { "$oid" : "5580f15271d1a16f5279df97" }, "date" : { "$date" : "2015-06-16T21:00:00.000-0700" }, "north" : 60, "south" : 59, "east" : 57, "west" : 63, "central" : 56, "national" : 63, "__v" : 0 }
 { "_id" : { "$oid" : "5580fe763f2b94030013d918" }, "date" : { "$date" : "2015-06-16T21:00:00.000-0700" }, "north" : 60, "south" : 59, "east" : 57, "west" : 63, "central" : 56, "national" : 63, "__v" : 0 }
 { "_id" : { "$oid" : "5581015f54c5300300346c34" }, "date" : { "$date" : "2015-06-16T22:00:00.000-0700" }, "north" : 61, "south" : 59, "east" : 58, "west" : 63, "central" : 56, "national" : 63, "__v" : 0 }
 { "_id" : { "$oid" : "55810f79b5cff60300fce36f" }, "date" : { "$date" : "2015-06-16T23:00:00.000-0700" }, "north" : 61, "south" : 59, "east" : 58, "west" : 63, "central" : 57, "national" : 63, "__v" : 0 }
