@@ -46,9 +46,9 @@ module.exports = React.createClass({
 		return(
 			<div>
 				<DateControl onStartDateChanged={this.setStartDate} onEndDateChanged={this.setEndDate} startDate={this.state.startDate} endDate={this.state.endDate} />
+				<DownloadButton collection={this.state.collection} startDate={this.state.startDate} endDate={this.state.endDate} />
 				<TimeChart graphName="googGraph" collection={this.state.collection} startDate={this.state.startDate} endDate={this.state.endDate} />
 				<Table collection={this.state.collection} startDate={this.state.startDate} endDate={this.state.endDate} />
-				<DownloadButton collection={this.state.collection} startDate={this.state.startDate} endDate={this.state.endDate} />
 			</div>
 		)
 	}

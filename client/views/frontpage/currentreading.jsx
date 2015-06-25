@@ -4,8 +4,13 @@ var React = require('react'),
 module.exports = React.createClass({
 	render: function() {
 		var formattedDate = this.props.currentDate.format('ha, MMMM Do YYYY');
+			console.log("Test")
+
 		return (
-			<h1>Current PSI: {this.props.reading.get('national')} as of {formattedDate}</h1>
+			<div>
+				<h1>{this.props.reading.get('national')}</h1>
+				<h3>As of {formattedDate}</h3>
+			</div>
 		)
 	}
 })

@@ -1,5 +1,4 @@
-var React = require('react'),
-	json2csv = require('json2csv')
+var React = require('react')
 
 module.exports = React.createClass({
 	handleClick: function() {

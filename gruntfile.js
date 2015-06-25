@@ -20,7 +20,10 @@ grunt.initConfig({
                                 'client/controllers/*.js'],
             },
             options: {
-                transform: [ require('grunt-react').browserify ]
+                transform: [ require('grunt-react').browserify ],
+                browserifyOptions: {
+                    debug: true
+                }
             },
         }
     },
@@ -53,6 +56,13 @@ grunt.initConfig({
                 dest: 'public/',
                 flatten: true,
                 filter: 'isFile',
+            }, {
+                expand: true,
+                cwd: 'client/media/',
+                src: '*',
+                dest: 'public/media/',
+                flatten: true,
+                filter: 'isFile'
             }]
         }
     },
