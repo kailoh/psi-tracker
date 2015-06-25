@@ -3,12 +3,11 @@ var React = require('react'),
 	DateControl = require('./datecontrol.jsx'),
 	TimeChart = require('./googchart.jsx'),
 	DownloadButton = require('./downloadbutton.jsx'),
-	modelMixin = require('./modelMixin.jsx'),
 	moment = require('moment'),
 	Backbone = require('backbone')
 
 module.exports = React.createClass({
-	mixins: [modelMixin],
+	
 	updateCollection: function(startDate, endDate) {
 		var newCollection = [];
 		this.props.collection.forEach(function(reading) {
@@ -24,12 +23,9 @@ module.exports = React.createClass({
 	componentWillMount: function() {
 		this.updateCollection(this.state.startDate, this.state.endDate);
 	},
-	getBackboneCollections: function() {
-		return [this.props.collection];
-	},
 	getInitialState: function() {
 		return {
-			startDate: moment().tz('Asia/Singapore').subtract(48, 'hours'),
+			startDate: moment().tz('Asia/Singapore').subtract(7, 'days'),
 			endDate: moment().tz('Asia/Singapore'),
 			collection: this.props.collection
 		};

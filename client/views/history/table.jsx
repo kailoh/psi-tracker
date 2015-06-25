@@ -1,4 +1,4 @@
-var modelMixin = require('./modelmixin.jsx'),
+var modelMixin = require('../modelmixin.jsx'),
 	React = require('react');
 	Reading = require('./reading.jsx'),
 	moment = require('moment-timezone')

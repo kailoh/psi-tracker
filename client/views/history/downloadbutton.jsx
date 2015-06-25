@@ -3,9 +3,6 @@ var React = require('react'),
 
 module.exports = React.createClass({
 	handleClick: function() {
-		console.log("handleClick");
-		console.dir(this.props.collection);
-
 		var csvContent = "data:text/csv;charset=utf-8,";
 		csvContent += "Date,National,North,South,East,West,Central\n";
 		this.props.collection.forEach(function(reading) {
@@ -20,7 +17,6 @@ module.exports = React.createClass({
 		});
 		var encodedUri = encodeURI(csvContent);
 		window.open(encodedUri);
-		console.log("handleClick END");
 	},
 	render: function() {
 		var formattedStartDate = this.props.startDate.format('ha, MMMM Do YYYY'),
