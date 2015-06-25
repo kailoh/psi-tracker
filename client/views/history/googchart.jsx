@@ -32,7 +32,10 @@ module.exports = React.createClass({
         var data = google.visualization.arrayToDataTable(chartData);
         var options = {
           title: 'PSI Readings from ' + formattedStartDate + ' to ' + formattedEndDate,
-          curveType: 'function'
+          curveType: 'function',
+          series: {
+            0: { lineWidth: 10 }
+          }
       };
 
       var chart = new google.visualization.LineChart(
