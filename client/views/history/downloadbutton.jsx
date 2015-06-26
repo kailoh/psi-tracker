@@ -21,7 +21,11 @@ module.exports = React.createClass({
 		var formattedStartDate = this.props.startDate.format('ha, MMMM Do YYYY'),
 			formattedEndDate = this.props.endDate.format('ha, MMMM Do YYYY')
 		return (
-			<button onClick={this.handleClick}>Download data from {formattedStartDate} to {formattedEndDate}</button>
+			<div>
+			<button className="btn btn-primary btn-lg" onClick={this.handleClick}>Download data as CSV</button>
+			<br /><br />
+			This will download the data from {formattedStartDate} to {formattedEndDate} in a format that can be opened by Excel
+			</div>
 		)
 	}
 

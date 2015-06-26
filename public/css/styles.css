@@ -23,6 +23,17 @@
 	margin-top:80px;
 }
 
+.historySection {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	text-align:center;
+}
+
+.historyTable {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
 .circle {
     width: 400px;
     height: 400px;
@@ -45,4 +56,34 @@
 	margin-top: 50px;
 	margin-bottom: 50px;
 	text-align: center;
+}
+
+.legendEntry {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.circleLegend {
+    font-size: 40px;
+    line-height: 20px;
+    position: relative;
+    top:5px;
+}
+
+.legendHealthy {
+	color: #163B16;
+}
+
+.legendModerate {
+	color: #6B3C03;
+}
+
+.legendUnhealthy {
+	color: #6B0803;
+}
+
+footer {
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: 20px;
 }

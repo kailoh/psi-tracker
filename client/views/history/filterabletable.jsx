@@ -44,12 +44,21 @@ module.exports = React.createClass({
 	},
 	render: function() {
 		return(
-			<div className="history container">
+			<div className="history">
+				<div className="container">
 				<DateControl onStartDateChanged={this.setStartDate} onEndDateChanged={this.setEndDate} startDate={this.state.startDate} endDate={this.state.endDate} />
-				<br /><br />
+				</div>
+				<br />
+				<hr />
+				<div className="container historySection">
 				<DownloadButton collection={this.state.collection} startDate={this.state.startDate} endDate={this.state.endDate} />
+				</div>
+				<div className="container historySection">
 				<TimeChart graphName="googGraph" collection={this.state.collection} startDate={this.state.startDate} endDate={this.state.endDate} />
+				</div>
+				<div className="container historyTable">
 				<Table collection={this.state.collection} startDate={this.state.startDate} endDate={this.state.endDate} />
+				</div>
 			</div>
 		)
 	}
