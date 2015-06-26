@@ -40,3 +40,9 @@
     bottom: 0;
     z-index: 2;
 }
+
+.frontSection {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	text-align: center;
+}

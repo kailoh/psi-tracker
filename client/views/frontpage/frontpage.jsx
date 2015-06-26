@@ -25,11 +25,15 @@ module.exports = React.createClass({
 				</div>
 				<Picture />
 
-				<div className="container">
-				<h3>PSI over the last 24 Hours</h3>
+				<div className="frontSection">
+				<h3>24-hour PSI</h3>
 				<RecentChart graphName="recentChart" collection={this.state.collection.slice(0,24).reverse()} startDate={this.state.startDate} endDate={this.state.endDate} />
+				</div>
 				<hr />
-				<h3>Map</h3>
+				<div className="frontSection">
+				<h3>Regional PSI</h3>
+				<br />
+				<br />
 				<Map reading={this.state.collection[0]} />
 				</div>
 			</div>

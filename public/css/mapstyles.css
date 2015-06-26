@@ -1,39 +1,38 @@
 .map-wrapper {
-	float: left;
 	position: relative;
 }
 
 .map-west {
 	position: absolute;
-	left: 10%;
-	top: 45%;
+	left: 32%;
+	top: 35%;
 	width: 10%;
 }
 
 .map-east {
 	position: absolute;
-	left: 80%;
-	top: 45%;
+	left: 60%;
+	top: 35%;
 	width: 10%;
 }
 
 .map-north {
 	position: absolute;
-	left: 45%;
-	top: 10%;
+	left: 44%;
+	top: 6%;
 	width: 10%;
 }
 
 .map-south {
 	position: absolute;
 	left: 45%;
-	bottom: 10%;
+	bottom: 25%;
 	width: 10%;
 }
 
 .map-central {
 	position: absolute;
 	left: 45%;
-	top: 45%;
+	top: 35%;
 	width: 10%;
 }

@@ -9,7 +9,6 @@ module.exports = React.createClass({
 		'16697215116_92c5e26e09_h']
 
 		var chosenImage = imageFileNames[Math.floor(Math.random()*imageFileNames.length)];
-		console.log("chosen image: " + chosenImage);
 		var fullPath = '/media/' + chosenImage + '.jpg';
 		return (
 			<div className="coverPicture" style={{ background: 'url(' + fullPath + ') no-repeat top center' }} />
