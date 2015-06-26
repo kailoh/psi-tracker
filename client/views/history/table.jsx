@@ -4,10 +4,31 @@ var modelMixin = require('../modelmixin.jsx'),
 	moment = require('moment-timezone')
 
 module.exports = React.createClass({
+	getInitialState: function() {
+		return {
+			ascending: true
+		}
+	},
+	handleChange: function() {
+		var newAscending = !this.state.ascending
+		this.setState({
+			ascending: newAscending
+		})
+	},
 	render: function() {
-		var rows = this.props.collection.map(function(reading) {
+		var sorted = [];
+		if (!this.state.ascending) {
+			for (var i=0; i<this.props.collection.length; i++) {
+				sorted.push(this.props.collection[this.props.collection.length-i-1]);
+			} 
+		} else {
+			for (var i=0; i<this.props.collection.length; i++) {
+				sorted.push(this.props.collection[i]);
+			} 
+		}
+		var rows = sorted.map(function(reading) {
 			return (
-            	<Reading key={reading.get('_id')} date={reading.get('date')} national={reading.get('national')} north={reading.get('north')} south={reading.get('south')} east={reading.get('east')} west={reading.get('west')} central={reading.get('central')} />
+            	<Reading key={reading.attributes._id} date={reading.attributes.date} national={reading.attributes.national} north={reading.attributes.north} south={reading.attributes.south} east={reading.attributes.east} west={reading.attributes.west} central={reading.attributes.central} />
 			);
 		});
 
@@ -15,7 +36,7 @@ module.exports = React.createClass({
 			<table className="table table-striped">
 			<thead>
 			<tr>
-			<th>Date</th>
+			<th>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button className="btn btn-sm" onClick={this.handleChange}>Sort</button></th>
 			<th>National</th>
 			<th>North</th>
 			<th>South</th>

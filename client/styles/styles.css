@@ -105,11 +105,11 @@ to   { transform: rotate(360deg) }
 
 .crazy {
 -moz-animation-name: roll;
--moz-animation-duration: 4s;
--moz-animation-iteration-count: 1;
+-moz-animation-duration: 1s;
+-moz-animation-iteration-count: 4;
 -webkit-animation-name: roll;
--webkit-animation-duration: 4s;
--webkit-animation-iteration-count: 1;
+-webkit-animation-duration: 1s;
+-webkit-animation-iteration-count: 4;
 }
 
 @-webkit-keyframes pulse { 0% {background-color: #45CEEF;} 25% {background-color: #FFF5A5;} 50% {background-color: #FFD4DA;} 75% {background-color: #99D2E4;} 100% {background-color: #D8CAB4;} }
