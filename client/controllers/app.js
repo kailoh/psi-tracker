@@ -21,7 +21,7 @@ function getCollection() {
 			var router = new Router();
 			React.render(
 				<FullApp router={router} collection={collection} />,
-				document.getElementById('table')
+				document.getElementById('mainContent')
 				);
 			React.render(
 				<Nav router={router} />,

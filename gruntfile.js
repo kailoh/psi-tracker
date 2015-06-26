@@ -28,11 +28,6 @@ grunt.initConfig({
         }
     },
 
-    concat: { 
-        'build/styles.css':
-        ['client/styles/*.css']
-    },
-
     copy: { //in dev mode, copy files from build directory to public so our front-end app can see them and our server can server them
         dev: {
             files: [{
@@ -44,11 +39,14 @@ grunt.initConfig({
                 filter: 'isFile',
             }, {
                 expand: true,
-                cwd: 'build/',
-                src: '*.css',
+                cwd: 'client/scripts/',
+                src: '*',
+                dest: 'public/js/',
+            }, {
+                expand: true,
+                cwd: 'client/styles/',
+                src: '**/*',
                 dest: 'public/css/',
-                flatten: true,
-                filter: 'isFile',
             }, {
                 expand: true,
                 cwd: 'client/',
@@ -110,7 +108,7 @@ grunt.initConfig({
 
 });
 
-grunt.registerTask('build:dev', ['clean:dev', 'concat', 'browserify:dev', 'copy:dev']);
+grunt.registerTask('build:dev', ['clean:dev', 'browserify:dev', 'copy:dev']);
 grunt.registerTask('server', ['build:dev', 'concurrent:dev']);
 
 };
