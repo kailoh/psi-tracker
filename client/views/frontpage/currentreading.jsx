@@ -13,7 +13,7 @@ module.exports = React.createClass({
 		} else if (this.props.reading.get('national')<101) {
 			backgroundColor = '#6B3C03';
 			severity = 'Moderate';
-		} else {
+		} else if (this.props.reading.get('national')>=101) {
 			backgroundColor = '#6B0803';
 			severity = 'Unhealthy';
 		}

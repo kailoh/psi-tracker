@@ -38,4 +38,3 @@ $.ajax(options).done(function(){
 		callback: getCollection
 	});
 });
-
